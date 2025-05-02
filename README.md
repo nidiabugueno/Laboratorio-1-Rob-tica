@@ -34,4 +34,10 @@ void loop() {
   analogWrite(6, 200);
   delay(2000);
 }
+## Resultado del montaje
+
+## Resultado del montaje
+
+![Robot funcionando](lab1.png)
+
 
