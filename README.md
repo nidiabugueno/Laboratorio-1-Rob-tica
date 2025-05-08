@@ -228,6 +228,7 @@ Respuesta: Si el motor no es controlado de forma precisa, puede variar la veloci
 
 ## Parte 2: Cinemática y Dinámica de Robots Móviles usando un IMU 
 - Aplicar la ecuación de cinemática diferencial para estimar la posición del robot usando tiempo y velocidad de motores.
+
 **Código:**
 ```
 #include <Wire.h>
@@ -388,7 +389,7 @@ void loop() {
 ```
 **Vídeo**: https://drive.google.com/file/d/1fpS-khl6iQy4GWuYIDFccKOfXM7q7GZq/view
 
--Usar el sensor IMU MPU6050 para medir la inclinación del robot y ajustar su dirección en tiempo real, realizando correcciones en el movimiento de acuerdo a su orientación.
+- Usar el sensor IMU MPU6050 para medir la inclinación del robot y ajustar su dirección en tiempo real, realizando correcciones en el movimiento de acuerdo a su orientación.
 
 **Código:**
 
@@ -470,6 +471,7 @@ void loop() {
 
 ```
 **Vídeo**: https://drive.google.com/file/d/1Zc-Ey_F4SHFxVSHrOlMefIYihA8CeaAN/view
+
 - Programar el PWM para controlar la velocidad de los motores y hacer que el robot se mueva a diferentes velocidades sin IMU, variando el tiempo de activación de los motores.
 
 **Código:**
