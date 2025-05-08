@@ -1,4 +1,4 @@
-# Laboratorio-1-Robtica
+# Laboratorio-1-Robotica
 Laboratorio 1 Robótica
 
 Integrantes:
