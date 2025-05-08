@@ -137,37 +137,6 @@ delay(500);
 }
 
 ```
-**Código:**
-```
-#include <HCSR04.h>
-#define PIN 13
-#define TRIG 7
-#define ECHO 8
-
-void setup() {
-Serial.begin(9600);
-HCSR04.begin(TRIG, ECHO);
-}
-
-void loop() {
-// put your main code here, to run repeatedly:
-//digitalWrite(PIN,HIGH);
-//delay(500);
-//digitalWrite(PIN,LOW);
-//delay(500);
-
-double* distances = HCSR04.measureDistanceCm();
- 
-Serial.print("1: ");
-Serial.print(distances[0]);
-Serial.println(" cm");
- 
-Serial.println("---");
-delay(250);
-}
-
-```
-
 Vídeo: https://drive.google.com/file/d/1ICvsdAPjJWLk06fB0XmYEiR-A8GNEfyz/view
 
 - Analizar los datos del IMU MPUC6050 para medir inclinación o giros del robot.
