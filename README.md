@@ -193,11 +193,11 @@ Serial.println(accelX_corr);
 
 
 ``` 
-Robot estable datos: Rango de valores de Pitch (Kalman): aproximadamente entre -1.38 y -0.56.
+Robot estable datos: 
+Rango de valores de Pitch (Kalman): aproximadamente entre -1.38 y -0.56.
 El robot se encuentra con una leve inclinación negativa, posiblemente por la superficie, pero dentro de un rango aceptable que el sistema considera como estabilidad.
 Robot inclinado datos:
 Rango de Pitch (Kalman): aproximadamente entre -13.59 y -13.64.
-
 El robot está inclinado significativamente (más de -13°), lo cual activa una condición de seguridad donde el sistema reduce la velocidad para evitar vuelcos o pérdida de control.
 
 **Vídeo**: https://drive.google.com/file/d/1iSbEzJE6Q4Q0dANLKPghf5y5tCmUJBqs/view
