@@ -549,7 +549,9 @@ Respuesta:
 **Ventajas:**
 
 Mide orientación y aceleración, útil para detectar giros o inclinaciones.
+
 No depende del contacto con las ruedas, por lo que funciona aunque haya derrapes.
+
 Permite detectar cambios en la dirección sin necesidad de estar en movimiento.
 
 **Desventajas:**
