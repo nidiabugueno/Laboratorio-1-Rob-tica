@@ -1,4 +1,4 @@
-# Laboratorio-1-Rob-tica
+# Laboratorio-1-Robtica
 Laboratorio 1 Robótica
 
 Integrantes:
@@ -105,6 +105,7 @@ digitalWrite(IN4, LOW);
 Video: https://drive.google.com/file/d/1-7thUElghyUQU8m_MMpq4xIjezMeh6Hi/view?usp=sharing
 
 - Verificar el funcionamiento del sensor ultrasónico HC-SR04 midiendo distancias.
+  
 **Código:**
 
 ```
@@ -227,18 +228,20 @@ Robot estable datos: Rango de valores de Pitch (Kalman): aproximadamente entre -
 El robot se encuentra con una leve inclinación negativa, posiblemente por la superficie, pero dentro de un rango aceptable que el sistema considera como estabilidad.
 Robot inclinado datos:
 Rango de Pitch (Kalman): aproximadamente entre -13.59 y -13.64.
+
 El robot está inclinado significativamente (más de -13°), lo cual activa una condición de seguridad donde el sistema reduce la velocidad para evitar vuelcos o pérdida de control.
-Vídeo: https://drive.google.com/file/d/1iSbEzJE6Q4Q0dANLKPghf5y5tCmUJBqs/view
+
+**Vídeo**: https://drive.google.com/file/d/1iSbEzJE6Q4Q0dANLKPghf5y5tCmUJBqs/view
 
 
 # Preguntas 
-**¿Qué función cumplen los sensores, actuadores y controladores en el robot? **
+**¿Qué función cumplen los sensores, actuadores y controladores en el robot?**
 
 Respuesta: Los sensores son los órganos de los sentidos del robot, su función es entender el entorno, tomar decisiones y poder actuar autónomamente.
 Los actuadores son dispositivos que convierten la energía en movimiento o fuerza para ejecutar acciones físicas.
 Los controladores se encargan de recibir la información de los sensores y procesarla para tomar decisiones.
 
-**¿Cómo se puede estimar la velocidad sin encoders? **
+**¿Cómo se puede estimar la velocidad sin encoders?**
 
 Respuesta: Estimando el desplazamiento a lo largo del tiempo (distancia/tiempo) usando sensores como el ultrasónico o midiendo el cambio de posición angular del IMU.
 
@@ -256,6 +259,7 @@ Respuesta: Si el motor no es controlado de forma precisa, puede variar la veloci
 
 ## Parte 2: Cinemática y Dinámica de Robots Móviles usando un IMU 
 - Aplicar la ecuación de cinemática diferencial para estimar la posición del robot usando tiempo y velocidad de motores.
+**Código:**
 ```
 #include <Wire.h>
 #include <MPU6050.h>
@@ -332,6 +336,8 @@ float w = (gyroZ_raw / 131.0) * DEG_TO_RAD; // rad/s
 ```
 **Vídeo** : https://drive.google.com/file/d/1b2ujf7nt7txO1WAqVt-UNlxOgFwxKQ0A/view
 - Hacer que el robot se mueva en línea recta y registrar desviaciones usando el sensor IMU para detectar la inclinación y giro del robot.
+  
+**Código:**
 
 ```
 #include <Wire.h>
@@ -415,6 +421,8 @@ void loop() {
 
 -Usar el sensor IMU MPU6050 para medir la inclinación del robot y ajustar su dirección en tiempo real, realizando correcciones en el movimiento de acuerdo a su orientación.
 
+**Código:**
+
 ```
 #include <Wire.h>
 #include <MPU6050.h>
@@ -493,7 +501,9 @@ void loop() {
 
 ```
 **Vídeo**: https://drive.google.com/file/d/1Zc-Ey_F4SHFxVSHrOlMefIYihA8CeaAN/view
-- Programar el PWM para controlar la velocidad de los motores y hacer que el robot se mueva a diferentes velocidades sin IMU, variando el tiempo de activación de los motores. 
+- Programar el PWM para controlar la velocidad de los motores y hacer que el robot se mueva a diferentes velocidades sin IMU, variando el tiempo de activación de los motores.
+
+**Código:**
 
 ```
 // Pines para motor izquierdo
@@ -553,8 +563,9 @@ void loop() {
 
 ```
 **Vídeo**: https://drive.google.com/file/d/1VQGqdG7C1GIXRpaNG7yKINdKvJK1Et1T/view
+
 # Preguntas:
-**¿Cómo se calcula la velocidad del robot sin encoders usando PWM? **
+**¿Cómo se calcula la velocidad del robot sin encoders usando PWM?**
 Respuesta: Sin encoders, no se puede medir directamente la velocidad real del robot. Sin embargo, se puede estimar la velocidad en función del valor de PWM aplicado al motor. Dado que el PWM controla el voltaje promedio que recibe el motor, se asume que a mayor PWM, mayor velocidad. La relación entre PWM y velocidad no es lineal debido a factores como fricción, carga y características del motor. Por lo tanto, se necesita una calibración previa experimental para correlacionar valores de PWM con velocidades aproximadas.
 
 **¿Qué factores afectan la trayectoria y velocidad del robot al cambiar los intervalos de tiempo?**
@@ -570,21 +581,24 @@ Ruido e inercia: El robot puede reaccionar de forma más inestable si los interv
 **¿Cuáles son las ventajas y desventajas de usar un IMU para ajustar la dirección en lugar de encoders?**
 Respuesta:
 
-Ventajas:
+**Ventajas:**
 
 Mide orientación y aceleración, útil para detectar giros o inclinaciones.
 No depende del contacto con las ruedas, por lo que funciona aunque haya derrapes.
 Permite detectar cambios en la dirección sin necesidad de estar en movimiento.
 
-Desventajas:
+**Desventajas:**
 
 Acumula error con el tiempo (deriva), especialmente si se basa solo en giroscopio.
+
 Requiere filtrado y calibración (por ejemplo, con un filtro complementario o de Kalman).
+
 No mide distancia recorrida, por lo que no reemplaza totalmente a los encoders en estimación de posición.
 
 **¿Qué efecto tiene la inclinación o el giro en el movimiento del robot, y cómo se corrige con el IMU?** 
 
-Respuesta: 
+Respuesta:
+
 La inclinación o giro puede hacer que el robot cambie su rumbo o pierda estabilidad. Por ejemplo, una pendiente puede hacer que el robot acelere o desacelere sin cambiar el PWM, y un giro no deseado puede desviarlo de su trayectoria. El IMU detecta estos cambios midiendo aceleraciones y rotaciones. Usando esa información, el sistema de control puede ajustar la velocidad diferencial de los motores para corregir la dirección (por ejemplo, aplicando más PWM a un lado que al otro para girar y volver al rumbo deseado).
 
 
